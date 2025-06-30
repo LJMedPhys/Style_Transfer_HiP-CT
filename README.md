@@ -1,7 +1,3 @@
-Here’s a sample README.md for your repo LJMedPhys/Style_Transfer_HiP-CT, tailored to its description and Python focus. You can customize further as needed:
-
----
-
 # Style Transfer HiP-CT
 
 Project to apply Style Transfer between HiP-CT and Clinical CT using CycleGANs + Preprocessing.
@@ -40,7 +36,16 @@ pip install -r requirements.txt
 
 3. Preprocessing:
 
-    In the preprocessing folder open the config.yaml file and complete the entries for you dataset. HiP-CT and clinical CT each follow a seperate Preprocessing pipeline.
+In the preprocessing folder open the config.yaml file and complete the entries for you dataset. HiP-CT and clinical CT each follow a seperate Preprocessing pipeline.
+
+Pipeline Clinical CT:
+
+![Preprocessing_clinical drawio(1)](https://github.com/user-attachments/assets/6a81bdb1-d8cb-4a78-b342-6390e1698469)
+
+
+Pipeline HiP-CT:
+
+![Reworked_Preprocessing_HiP-CT drawio(1)](https://github.com/user-attachments/assets/8357759f-c051-4e1e-aacd-1b40bb8ba671)
 
 
 
@@ -81,7 +86,3 @@ pip install -r requirements.txt
 ## License
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
-
----
-
-Let me know if you’d like to add dataset details, example images, or usage guides specific to your implementation!
