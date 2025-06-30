@@ -8,7 +8,7 @@ Project to apply Style Transfer between HiP-CT and Clinical CT using CycleGANs +
 
 ## Overview
 
-This repository contains code and resources for performing style transfer between High-resolution Peripheral Quantitative Computed Tomography (HiP-CT) and Clinical CT images. The approach leverages CycleGANs for unpaired image-to-image translation, along with preprocessing routines to prepare the datasets.
+This repository contains code and resources for performing style transfer between Hierachical Phase Contrast Tomography (HiP-CT) and Clinical CT images. The approach leverages CycleGANs for unpaired image-to-image translation, along with preprocessing routines to prepare the datasets.
 
 ## Features
 
@@ -19,12 +19,6 @@ This repository contains code and resources for performing style transfer betwee
 
 ## Requirements
 
-- Python 3.7+
-- PyTorch
-- NumPy
-- scikit-image
-- OpenCV
-- (add other dependencies as required)
 
 You can install the dependencies with:
 ```bash
