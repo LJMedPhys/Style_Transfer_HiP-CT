@@ -8,7 +8,7 @@ Project to apply Style Transfer between HiP-CT and Clinical CT using CycleGANs +
 
 ## Overview
 
-This repository contains code and resources for performing style transfer between Hierachical Phase Contrast Tomography (HiP-CT) and Clinical CT images. The approach leverages CycleGANs for unpaired image-to-image translation, along with preprocessing routines to prepare the datasets.
+This repository contains code and resources for performing style transfer between Hierachical Phase Contrast Tomography (HiP-CT) and Clinical CT images. The approach leverages CycleGANs for unpaired image-to-image translation, along with preprocessing routines to prepare the datasets. This model was trained and developed to work on Lung Datasets
 
 ## Features
 
@@ -33,11 +33,18 @@ pip install -r requirements.txt
     cd Style_Transfer_HiP-CT
     ```
 
-2. Prepare your datasets:
-    - Place HiP-CT and Clinical CT images in the respective folders under ./data/
-    - Update configuration files as needed
+2. Segment your datasets:
+    - Before you can start the training you need to segment you data set
+    - For HiP-CT data you can the segmentation tool: https://github.com/LJMedPhys/HiP-CT-segmentator
+    - For Clinical CT data the TotalSegmenator works: https://github.com/wasserth/TotalSegmentator
 
-3. Run preprocessing:
+3. Preprocessing:
+
+    In the preprocessing folder open the config.yaml file and complete the entries for you dataset. HiP-CT and clinical CT each follow a seperate Preprocessing pipeline.
+
+
+
+
     ```bash
     python preprocess.py
     ```
