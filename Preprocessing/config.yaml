@@ -1,0 +1,42 @@
+hip_ct:
+  enable: false
+  input_dir: 'path/to/HiP-CT/folder/'
+  mask_dir: 'path/to/HiP-CT/masks.h5'
+  output_dir: 'path/to/output_directory/output.h5'
+  output_mask_dir: 'path/to/output_directory/masks.h5'
+  spacing: [0.67, 0.67]
+  window_size: 96
+  stride: 48
+  threshold: 0.0
+  percentile: 0.85
+  clip_values: [-3, 3]
+  steps:
+    standard_scaling: true
+    segmentation: true
+    min_padding: true
+    adjust_spacing: true
+    clipping: true
+    min_max_scaling: true
+    slicing: true
+
+clinical_ct:
+  enable: true
+  input_dir: 'path/to/clinical_ct/folder/with/dicoms/'
+  mask_dir: 'path/to/clinical_ct/mask/from_total_segmentator.nifti'
+  output_dir: 'path/to/output_directory/clinical_ct.h5'
+  output_mask_dir: 'path/to/output_directory/clinical_ct_masks.h5'
+  spacing: [0.67, 0.67]
+  window_size: 128
+  stride: 64
+  threshold: -1024.
+  padding: -1024.
+  cut_off: 500
+  percentile: 0.85
+  steps:
+    HU_scaling: true
+    min_max_scaling: true
+    adjust_spacing: true
+    segmentation: true
+    clipping: true
+    slicing: true
+

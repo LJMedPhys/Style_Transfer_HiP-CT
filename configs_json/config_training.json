@@ -1,0 +1,43 @@
+{
+    "name_run":"name of the run",
+    "device":"cuda:",
+    "skip": "False",
+    "batch_size": 50,
+    "image_size": 64,
+    "test_split": 0.001,
+    "learning_rate_G": 0.0002,
+    "learning_rate_D": 0.0001,
+    "n_residual_blocks": 4,
+    "beta1": 0.5,
+    "beta2": 0.999,
+    "epochs": 200,
+    "lambda_A": 10.0,
+    "lambda_B": 10.0,
+    "lambda_identity": 0.5,
+    "path_checkpoints": "/path/to/checkpoints",
+    "paths_A_train": [
+        "path/to/HiP-CT/training/lung",
+        "path/to/HiP-CT/training/lung"
+    ],
+    "paths_A_test": [
+       "path/to/HiP-CT/test/lung",
+        "path/to/HiP-CT/test/lung"
+    ],
+    "paths_A_val": [
+        "path/to/HiP-CT/validation/lung",
+        "path/to/HiP-CT/validation/lung"
+    ],
+    "paths_B_train": [
+        "path/to/Clinical-CT/training/lung",
+        "path/to/Clinical-CT/training/lung"
+    ],
+    "paths_B_test": [
+        "path/to/Clinical-CT/test/lung",
+        "path/to/Clinical-CT/training/lung"
+    ],
+    "paths_B_val": [
+        "path/to/Clinical-CT/validation/lung",
+        "path/to/Clinical-CT/validation/lung"
+    ]
+}
+
