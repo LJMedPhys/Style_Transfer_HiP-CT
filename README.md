@@ -87,12 +87,12 @@ For Clinical CT the parameters are similar with some differences due to the moda
 | `clipping`  | `bool`  | activates clipping of the upper end of the distribution| 
 | `slicing`  | `bool`  | activates sclicing into tiles | 
 
+After setting all the parameters the preprocessing can be started with:
+```bash
+python run_preprocessing.py --config /path/to/config.yaml
+```
 
-    ```bash
-    python preprocess.py
-    ```
-
-4. Train the CycleGAN:
+4. Train the CycleGAN
     ```bash
     python train.py --config configs/config.yaml
     ```
