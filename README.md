@@ -38,16 +38,54 @@ pip install -r requirements.txt
 
 In the preprocessing folder open the config.yaml file and complete the entries for you dataset. HiP-CT and clinical CT each follow a seperate Preprocessing pipeline.
 
-Pipeline Clinical CT:
+![Pipelines_preproc_together drawio](https://github.com/user-attachments/assets/58e71d04-451a-4423-852a-f8827dfb1e7b)
 
-![Preprocessing_clinical drawio(1)](https://github.com/user-attachments/assets/6a81bdb1-d8cb-4a78-b342-6390e1698469)
+Starting with HiP-CT pipeline, the following parameters need to be filled out
+
+| Parameter    | Type     | Description                                                        | 
+| ------------ | -------- | ------------------------------------------------------------------ | 
+| `enable`  | `bool`  | set to true if you want to apply hip_ct preprocessing | 
+| `input_dir`  | `string` | Path to the input directory containing the HiP-CT scan                | 
+| `mask_dir` | `string` | Path to the input directory containing the masks for the scans from the previous step| 
+| `output_dir` | `string`  |Path to the output directory where the preprocessed scans will be stored | 
+| `output_mask_dir`    | `string`   | Path to the output directory where the masks correspond to the preprocessed scans will be stored|
+| `spacing`  | `list floats` | pixel sizes in mm for the [x,y]-Dimension that the input will be scaled|
+| `window size`  | `int`  | The input images are sliced into tiles using a sliding window, this determines the size of the window in pixels, must be smaller or equal to the input image| 
+| `stride`  | `int`  | Distance the window travels in pixels | 
+| `threshold`  | `float`  | After slicing the input, empty slices are removed. This value determines which value counts as empty | 
+| `percentile`  | `float`  | between [0,1), describes the maximum percentage of pixels in a slice that are allowed to be empty | 
+| `clip_values`  | `list of floats`  | after standardscaling the pixel distribution of the input scan can be clipped within this range. After standard scaling, the unit becomes standard deviations| 
+| `standard_scaling`  | `bool`  | activates if the scan is standard scaled (x-mean)/standard_deviation | 
+| `segmentation`  | `bool`  | activates the application of the mask | 
+| `min_padding`  | `bool`  | if activated the empty pixels are replaced with the minimum of the distribution | 
+| `adjust spacing`  | `bool`  | activates adjustment of pixel size | 
+| `clipping`  | `bool`  | activates clipping of the ends of the distribution| 
+| `min_max_scaling`  | `bool`  | activates min_max scaling after standard scaling | 
+| `slicing`  | `bool`  | activates sclicing into tiles | 
 
 
-Pipeline HiP-CT:
+For Clinical CT the parameters are similar with some differences due to the modality:
 
-![Reworked_Preprocessing_HiP-CT drawio(1)](https://github.com/user-attachments/assets/8357759f-c051-4e1e-aacd-1b40bb8ba671)
-
-
+| Parameter    | Type     | Description                                                        | 
+| ------------ | -------- | ------------------------------------------------------------------ | 
+| `enable`  | `bool`  | set to true if you want to apply clinical ct preprocessing | 
+| `input_dir`  | `string` | Path to the input directory containing the clinical CT dicoms| 
+| `mask_dir` | `string` | Path to the input directory containing the masks for the scans from the previous step| 
+| `output_dir` | `string`  |Path to the output directory where the preprocessed scans will be stored | 
+| `output_mask_dir`    | `string`   | Path to the output directory where the masks correspond to the preprocessed scans will be stored|
+| `spacing`  | `list floats` | pixel sizes in mm for the [x,y]-Dimension that the input will be scaled|
+| `window size`  | `int`  | The input images are sliced into tiles using a sliding window, this determines the size of the window in pixels, must be smaller or equal to the input image| 
+| `stride`  | `int`  | Distance the window travels in pixels | 
+| `threshold`  | `float`  | After slicing the input, empty slices are removed. This value determines which value counts as empty | 
+| `padding`  | `float`  | Value the empty pixels are replaced with (in HU) | 
+| `cutoff`  | `float`  | limit of the upper end of the distribution that will be clipped | 
+| `percentile`  | `float`  | between [0,1), describes the maximum percentage of pixels in a slice that are allowed to be empty | 
+| `HU_scaling`  | `bool`  | activates if the scan is standard scaled to Houndsfield units using the meta data of the DICOM files | 
+| `min_max_scaling`  | `bool`  | activates min_max scaling after HU scaling | 
+| `adjust spacing`  | `bool`  | activates adjustment of pixel size | 
+| `segmentation`  | `bool`  | activates the application of the mask | 
+| `clipping`  | `bool`  | activates clipping of the upper end of the distribution| 
+| `slicing`  | `bool`  | activates sclicing into tiles | 
 
 
     ```bash
