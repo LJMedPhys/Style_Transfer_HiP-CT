@@ -1,6 +1,6 @@
 {
     "name_run":"name of the run",
-    "device":"cuda:",
+    "device":"cuda:0",
     "skip": "False",
     "batch_size": 50,
     "image_size": 64,
