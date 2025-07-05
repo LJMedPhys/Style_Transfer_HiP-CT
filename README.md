@@ -125,10 +125,18 @@ To start the training run the following command:
 
 The last two flags are optional. load_checkpoint loads the last saved checkpoint from the checkpoint directory in the config files. log_wandb endables tracking of the training if weights and biases is installed: https://wandb.ai
 
-5. Generate style-transferred images:
-    ```bash
-    python test.py --config configs/config.yaml --weights checkpoints/latest.pth
-    ```
+5. Postprocessing
+
+To translate the dataset and reapply the original segmentation removing any additional artifact the postprocessing.py can be applied: 
+
+```bash
+    python postprocessing.py --epoch 199 --output_path ./output.h5 --config ./configs_json/config_training.json --mask_in_vivo_test path/to/clinical/masks.h5 --mask_HiP_test path/to/HiP-CT/masks.h5
+ ```
+
+The epoch to load, the output path of the h5 file, the config file used for training and the paths to the masks of the test data set for the clinical CT and HiP-CT lung need to specified. 
+
+The generated H5 file containes the input patch, the recoverd patches, the identity patches and the translated (fake) batches both raw and resegmented. 
+
 
 ## Repository Structure
 
