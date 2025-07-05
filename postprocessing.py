@@ -21,8 +21,8 @@ def parse_args():
     parser.add_argument('--epoch', type=int, default=199, help='Epoch to load checkpoint from')
     parser.add_argument('--output_path', type=str, default='./output.h5', help='Output HDF5 file path')
     parser.add_argument('--config', type=str, default='./configs_json/config_training.json', help='Path to config JSON')
-    parser.add_argument('--mask_in_vivo_val', nargs='+', default=["path/to/clinical/masks.h5"], help='List of masks for the clinical CT validation dataset paths')
-    parser.add_argument('--mask_HiP_val', nargs='+', default=["path/to/HiP-CT/masks.h5"], help='List of masks for the HiP-CT validation dataset paths')
+    parser.add_argument('--mask_in_vivo_test', nargs='+', default=["path/to/clinical/masks.h5"], help='List of masks for the clinical CT test dataset paths')
+    parser.add_argument('--mask_HiP_test', nargs='+', default=["path/to/HiP-CT/masks.h5"], help='List of masks for the HiP-CT test dataset paths')
     return parser.parse_args()
 
 def main():
