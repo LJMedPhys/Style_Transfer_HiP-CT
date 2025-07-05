@@ -137,19 +137,40 @@ The epoch to load, the output path of the h5 file, the config file used for trai
 
 The generated H5 file containes the input patch, the recoverd patches, the identity patches and the translated (fake) batches both raw and resegmented. 
 
+6. Evaluation
+
+The metrics on the postprocessed dataset can be calculated with the eval.py script:
+
+```bash
+    python eval.py --path_post /path/to/postprocessed.h5
+```
+
+This script caculates the psnr, mse, mae, Frechet inception distance and the ssim for between the original patches and :
+
+- Recovered patches
+- Identity patches
+- Translated (Fake) patches
+- Segmented Translated (Fake) patches
+
+
 
 ## Repository Structure
 
 ```
 .
-├── data/                # Datasets and data preparation scripts
-├── models/              # CycleGAN and related model code
-├── utils/               # Utility scripts (metrics, visualization, etc.)
+├── Preprocessing/       # Data preprocessing scripts
+├── configs_json/        # Contains training config files          
 ├── configs/             # Configuration files
-├── preprocess.py        # Preprocessing script
+├── config.py            # Config loader
 ├── train.py             # Training script
-├── test.py              # Inference/testing script
+├── data.py              # Dataloaders
+├── eval.py              # Evaluation script
+├── losses.py            # Loss functions for the model
+├── model.py             # Contains the CycleGAN model
+├── postprocessing.py    # Applies trained network to test data and resegments
 ├── requirements.txt     # Python dependencies
+├── train.py             # Launches the training
+├── utils.py             # Contains various useful scripts
 └── README.md
 ```
 
