@@ -93,9 +93,37 @@ python run_preprocessing.py --config /path/to/config.yaml
 ```
 
 4. Train the CycleGAN
-    ```bash
-    python train.py --config configs/config.yaml
-    ```
+
+To configure the training process the parameters need to configured in the config file provded in the configs_json folder:
+
+
+| Parameter    | Type     | Description                                                        | 
+| ------------ | -------- | ------------------------------------------------------------------ | 
+| `name_run`  | `string`  | if weights and biases is installed this is the name of the run | 
+| `device`  | `string` | Graphics card used for training | 
+| `skip` | `boolean` | if True activates skip connections between encoder and decoder, not recommended to activate | 
+| `batch_size` | `int`  | size of the batch | 
+| `image_size` | `int`  | Path to the output directory where the preprocessed scans will be stored | 
+| `test_split` | `float`  | percentage used for plotting during training (ignore) | 
+| `learning_rate_G` | `float`  | Learning rate for the generators | 
+| `learning_rate_D` | `float`  | Learning rate for the discriminators | 
+| `n_residual_blocks` | `int`  | Number of residual blocks between encoding and decoding part | 
+| `beta1` | `float` | decay parameter for first moment of adam optimizer | 
+| `beta2` | `float` | decay parameter for second moment of adam optimizer |
+| `epochs` | `200` | Epochs to train the network for |
+| `lambda_A` | `float` | weighting parameter for the cycle loss of HiP-CT|
+| `lambda_B` | `float` | weighting parameter for the cycle loss of clinical CT|
+| `lambda_identity` | `float` | weighting parameter for the identity loss|
+|`paths_A_trian`|`list of strings`| array of paths to the preprocessed hip-CT lungs in .h5 format|
+|`paths_B_trian`|`list of strings`| array of paths to the preprocessed clincal CT lungs in .h5 format|
+
+To start the training run the following command: 
+
+```bash
+    python train.py --config configs/config.yaml --load_checkpoint --log_wandb 
+```
+
+The last two flags are optional. load_checkpoint loads the last saved checkpoint from the checkpoint directory in the config files. log_wandb endables tracking of the training if weights and biases is installed: https://wandb.ai
 
 5. Generate style-transferred images:
     ```bash
